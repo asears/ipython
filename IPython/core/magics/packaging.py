@@ -93,6 +93,23 @@ class PackagingMagics(Magics):
 
         print("Note: you may need to restart the kernel to use updated packages.")
 
+    @line_magic
+    def uv(self, line):
+        """Run the uv pip package manager within the current kernel.
+
+        Usage:
+          %uv install [pkgs]
+        """
+        python = sys.executable
+        if sys.platform == "win32":
+            python = '"' + python + '"'
+        else:
+            python = shlex.quote(python)
+
+        self.shell.system(" ".join([python, "-m", "uv", "pip", line]))
+
+        print("Note: you may need to restart the kernel to use updated packages.")
+
     def _run_command(self, cmd, line):
         args = shlex.split(line)
         command = args[0] if len(args) > 0 else ""

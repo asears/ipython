@@ -2667,7 +2667,7 @@ class InteractiveShell(SingletonConfigurable):
             main_cmd = ""
         else:
             main_cmd = cmd.split()[0]
-        has_magic_alternatives = ("pip", "conda", "cd")
+        has_magic_alternatives = ("pip", "conda", "cd", "uv")
 
         if main_cmd in has_magic_alternatives:
             warnings.warn(

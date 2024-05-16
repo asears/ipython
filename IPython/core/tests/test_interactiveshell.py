@@ -666,7 +666,7 @@ class TestSystemRaw(ExitCodeChecks):
         self.assertEqual(ip.user_ns["_exit_code"], -signal.SIGINT)
 
 
-@pytest.mark.parametrize("magic_cmd", ["pip", "conda", "cd"])
+@pytest.mark.parametrize("magic_cmd", ["pip", "conda", "cd", "uv"])
 def test_magic_warnings(magic_cmd):
     if sys.platform == "win32":
         to_mock = "os.system"
